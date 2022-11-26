@@ -24,7 +24,7 @@ namespace Yolov5Net.Scorer
         private readonly InferenceSession _inferenceSession;
 
         /// <summary>
-        /// Outputs value between 0 and 1.
+        /// 输出介于0和1之间的值。
         /// </summary>
         private float Sigmoid(float value)
         {
@@ -32,7 +32,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Converts xywh bbox format to xyxy.
+        /// 将xywh-bbox格式转换为xyxy。
         /// </summary>
         private float[] Xywh2xyxy(float[] source)
         {
@@ -47,7 +47,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Returns value clamped to the inclusive range of min and max.
+        /// 返回限制在最小值和最大值之间的值。
         /// </summary>
         public float Clamp(float value, float min, float max)
         {
@@ -55,7 +55,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Resizes image keeping ratio to fit model input size.
+        /// 调整图像保持比率以适合模型输入大小。
         /// </summary>
         private Bitmap ResizeImage(Image image)
         {
@@ -85,7 +85,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Extracts pixels into tensor for net input.
+        /// 将像素提取到张量中用于净输入。
         /// </summary>
         private Tensor<float> ExtractPixels(Image image)
         {
@@ -118,7 +118,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Runs inference session.
+        /// 运行推理会话。
         /// </summary>
         private DenseTensor<float>[] Inference(Image image)
         {
@@ -147,7 +147,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Parses net output (detect) to predictions.
+        /// 将净输出（检测）解析为预测。
         /// </summary>
         private List<YoloPrediction> ParseDetect(DenseTensor<float> output, Image image)
         {
@@ -197,7 +197,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Parses net outputs (sigmoid) to predictions.
+        /// 将净输出（S形）解析为预测。
         /// </summary>
         private List<YoloPrediction> ParseSigmoid(DenseTensor<float>[] output, Image image)
         {
@@ -261,7 +261,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Parses net outputs (sigmoid or detect layer) to predictions.
+        /// 将网络输出（S形或检测层）解析为预测。
         /// </summary>
         private List<YoloPrediction> ParseOutput(DenseTensor<float>[] output, Image image)
         {
@@ -269,7 +269,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Removes overlaped duplicates (nms).
+        /// 删除重叠的重复项（nms）。
         /// </summary>
         private List<YoloPrediction> Supress(List<YoloPrediction> items)
         {
@@ -303,7 +303,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Runs object detection.
+        /// 运行对象检测(推理|预测)。
         /// </summary>
         public List<YoloPrediction> Predict(Image image)
         {
@@ -311,7 +311,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Creates new instance of YoloScorer.
+        /// 创建Yolo Scorer的新实例。
         /// </summary>
         public YoloScorer()
         {
@@ -319,7 +319,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Creates new instance of YoloScorer with weights path and options.
+        /// 使用权重路径和选项创建Yolo Scorer的新实例。
         /// </summary>
         public YoloScorer(string weights, SessionOptions opts = null) : this()
         {
@@ -327,7 +327,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Creates new instance of YoloScorer with weights stream and options.
+        /// 使用权重流和选项创建Yolo Scorer的新实例。
         /// </summary>
         public YoloScorer(Stream weights, SessionOptions opts = null) : this()
         {
@@ -338,7 +338,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Creates new instance of YoloScorer with weights bytes and options.
+        /// 使用权重字节和选项创建Yolo Scorer的新实例。
         /// </summary>
         public YoloScorer(byte[] weights, SessionOptions opts = null) : this()
         {
@@ -346,7 +346,7 @@ namespace Yolov5Net.Scorer
         }
 
         /// <summary>
-        /// Disposes YoloScorer instance.
+        /// 销毁 Yolo Scorer 实例
         /// </summary>
         public void Dispose()
         {

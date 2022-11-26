@@ -3,7 +3,7 @@
 namespace Yolov5Net.Scorer
 {
     /// <summary>
-    /// Object prediction.
+    /// 对象预测
     /// </summary>
     public class YoloPrediction
     {

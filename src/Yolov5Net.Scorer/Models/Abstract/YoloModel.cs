@@ -3,7 +3,7 @@
 namespace Yolov5Net.Scorer.Models.Abstract
 {
     /// <summary>
-    /// Model descriptor.
+    /// 模型描述符
     /// </summary>
     public abstract class YoloModel
     {

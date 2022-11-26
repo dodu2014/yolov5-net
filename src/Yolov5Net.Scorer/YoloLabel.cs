@@ -3,7 +3,7 @@
 namespace Yolov5Net.Scorer
 {
     /// <summary>
-    /// Label of detected object.
+    /// 检测到的对象的标签。
     /// </summary>
     public class YoloLabel
     {

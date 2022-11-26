@@ -1,7 +1,7 @@
 ﻿namespace Yolov5Net.Scorer
 {
     /// <summary>
-    /// Enum to specify type of detected object.
+    /// 枚举以指定检测到的对象的类型。
     /// </summary>
     public enum YoloLabelKind
     {

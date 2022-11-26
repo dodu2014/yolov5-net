@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using Yolov5Net.Scorer;
 using Yolov5Net.Scorer.Models;
 
@@ -10,9 +11,10 @@ namespace Yolov5Net.App
     {
         static void Main(string[] args)
         {
-            using var image = Image.FromFile("Assets/test.jpg");
+            var fileName = "cat.png";
+            using var image = Image.FromFile($"Assets/{fileName}");
 
-            using var scorer = new YoloScorer<YoloCocoP5Model>("Assets/Weights/yolov5n.onnx");
+            using var scorer = new YoloScorer<YoloCocoP5Model>("Assets/Weights/yolov5s.onnx");
 
             List<YoloPrediction> predictions = scorer.Predict(image);
 
@@ -32,7 +34,13 @@ namespace Yolov5Net.App
                     new PointF(x, y));
             }
 
-            image.Save("Assets/result.jpg");
+            var outputFileName = Path.GetFileNameWithoutExtension(fileName);
+            var outputExt = Path.GetExtension(fileName);
+
+            image.Save($"Assets/{outputFileName}-result{outputExt}");
+
+            Console.WriteLine("output successed.");
+            //Console.ReadKey();
         }
     }
 }
